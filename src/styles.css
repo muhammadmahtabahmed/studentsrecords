@@ -1,0 +1,62 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+  
+.full-width {
+    width: 100%;
+  }
+ 
+ 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.container
+{
+    padding:10px 0px 0px 10px
+}
+.header-style{
+font-size: x-large;
+font-weight: 600;
+font-family: monospace;
+background-color:#673ab7 ;
+text-align: center;
+color: white;
+padding: 10px 0px 10px 0px;
+
+
+}
+
+.outer-style{
+  background-color: #d9d9d972;
+  padding: 10px;
+  border:2px solid #acacac;
+  border-radius: .6rem;
+}
+
+
+/*Choose file button*/
+.choose-btn-style{
+  margin: 40px 0;
+  width: 500px !important;
+}
+.mat-toolbar-single-row {
+  height: auto !important;
+  background: transparent;
+}
+.mat-toolbar-single-row button {
+  width: 200px;
+}
+.choose-btn-style{
+  width: 100%;
+}
+#uploadFile {
+  top: 0px;
+  left: 0px;
+  width: 100%;    
+  z-index: 9;
+  opacity: 0;
+  height: 100%;
+  cursor: pointer;
+  position: absolute;
+
+}
