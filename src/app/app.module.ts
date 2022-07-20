@@ -15,6 +15,8 @@ import { EnrollstudentdetailComponent } from './enrollstudentdetail/enrollstuden
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {MatToolbarModule} from '@angular/material/toolbar'; 
+import { NgxMatFileInputModule } from '@angular-material-components/file-input';
+import {stdenrollservice} from './shared/stdenrollservice.service'
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatIconModule,
     MatSelectModule,
     MatToolbarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxMatFileInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

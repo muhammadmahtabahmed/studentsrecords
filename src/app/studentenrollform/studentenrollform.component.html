@@ -1,24 +1,21 @@
-<mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <span>anjular project</span>     
-    </mat-toolbar-row>
-  </mat-toolbar>
-<div class="container ">
+
+<div class="container">
   
-    <form class="col-md-6 outer-style">    
+    <form class="col-md-6 outer-style" [formGroup]="service.form">    
       <div class="col-md-12 header-style mb-3">Personal Information</div>
       <div class="row"> 
         <div class="col-md-6">
           <mat-form-field class="full-width" appearance="fill">
             <mat-label>Id</mat-label>
-            <input #stdId maxlength="5" placeholder="Ex. 12048" value="" matInput>
+            <input #stdId maxlength="5" placeholder="Ex. 12048" formControlName="$Key" matInput>
             <mat-hint align="end">{{stdId.value.length}} / 5</mat-hint>
             </mat-form-field>  
         </div>
         <div class="col-md-6">
           <mat-form-field class="full-width" appearance="fill">
-            <mat-label>Name</mat-label>
-            <input matInput>
+            <mat-label>Full Name*</mat-label>
+            <input formControlName="Fullname"  matInput>
+            <mat-error>This field is mandatory.</mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -29,31 +26,34 @@
         <div class="col-md-6">
           <mat-form-field class="full-width" appearance="fill">
             <mat-label>Email *</mat-label>
-            <input matInput placeholder="Ex. abc@gmail.com">
+            <input formControlName="email"  matInput placeholder="Ex. abc@gmail.com">
+            <mat-error>Invalid emal address</mat-error>
           </mat-form-field>
         </div>
         <div class="col-md-6">
           <mat-form-field class="full-width" appearance="fill">
-            <mat-label>Phone</mat-label>
-            <input matInput placeholder="Ex. +92-333-0513210">
-            <mat-error>hfgdsjfkdhs</mat-error>
-      </mat-form-field>
+            <mat-label>Telephone</mat-label>
+            <span matPrefix>+1 &nbsp;</span>
+            <input formControlName="Telephone" type="tel" matInput placeholder="555-555-1234">
+            <mat-error *ngIf="service.form.controls['mobile'].errors?.required">This field is mandatory.</mat-error>
+            <mat-error *ngIf="service.form.controls['mobile'].errors?.length">10 charactors needed</mat-error>
+          </mat-form-field>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
           <mat-form-field class="full-width" appearance="fill">
             <mat-label>Age</mat-label>
-            <input matInput placeholder="Ex. 19">
+            <input formControlName="age" matInput placeholder="Ex. 19">
           </mat-form-field>
         </div>
         <div class="col-md-6">
           <mat-form-field class="full-width" appearance="fill">
-            <mat-label>Gender</mat-label>
-            <mat-select>
-              <mat-option value="male">Male</mat-option>
-              <mat-option value="female">Female</mat-option>
-            </mat-select>
+            <mat-radio-group aria-label="Gender" formControlName="gender">
+              <mat-radio-button value="1">Male</mat-radio-button>
+              <mat-radio-button value="2">Female</mat-radio-button>
+              <mat-radio-button value="3">Other</mat-radio-button>
+            </mat-radio-group>
       </mat-form-field>
         </div>
       </div>
@@ -62,48 +62,36 @@
         <div class="col-md-12">
           <mat-form-field class="full-width" appearance="fill">
             <mat-label>Address</mat-label>
-            <textarea matInput placeholder="Ex. H#612,I-10/2 Main St"></textarea>
+            <textarea formControlName="address" matInput placeholder="Ex. H#612,I-10/2 Main St"></textarea>
           </mat-form-field>
         </div>
       </div>
      
       <div class="row">
-        <div class="col-md-4">
-          <mat-form-field class="full-width" appearance="fill">
-            <mat-label>City</mat-label>
-            <input matInput placeholder="Ex. Islamabad">
-          </mat-form-field>
-        </div>
-        <div class="col-md-4">
-          <mat-form-field class="full-width" appearance="fill">
-            <mat-label>State</mat-label>
-            <input matInput placeholder="Ex. Punjab">
-          </mat-form-field>
-        </div>
-        <div class="col-md-4">
-          <mat-form-field class="full-width" appearance="fill">
-            <mat-label>Postal Code</mat-label>
-            <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" value="">
-            <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-          </mat-form-field>
-        </div>
-      </div>
-      
-      <div>
-        <mat-form-field class="choose-btn-style">
-          <div>
-            <mat-toolbar>
-              <!-- Display files names -->
-              <input matInput  readonly name="name" />
-              <!-- Browse Button -->
-              <button mat-flat-button color="primary">Browse File</button>
-            </mat-toolbar>
-            <!-- Fetch selected filed on change -->
-            <input type="file" #fileInput id="uploadFile" name="uploadFile" multiple="multiple"
-              accept="image/*" style="color: black;" value="choose"
-            />
+          <div class="col-md-4">
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>City</mat-label>
+              <input formControlName="city" matInput placeholder="Ex. Islamabad">
+            </mat-form-field>
           </div>
-        </mat-form-field>
+          <div class="col-md-4">
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>State</mat-label>
+              <input formControlName="state" matInput placeholder="Ex. Punjab">
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Postal Code</mat-label>
+              <input formControlName="postalcode" matInput #postalCode maxlength="5" placeholder="Ex. 94105" value="">
+              <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+            </mat-form-field>
+          </div>
+      </div>
+      <div class="row">
+        <button type="submit" class="px-5 mr-3" mat-raised-button color="primary" [disabled]="service.form.invalid">Submit</button>
+        <button class="px-5" mat-raised-button color="warn" (click)='onClear()'>Clear</button>
+
       </div>
     </form>
 </div>
