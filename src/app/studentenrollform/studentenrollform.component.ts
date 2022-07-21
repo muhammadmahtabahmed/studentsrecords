@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {stdenrollservice} from '../../shared/stdenrollservice.service';
+import { StdenrollserviceService } from '../shared/stdenrollservice.service';
 @Component({
   selector: 'app-studentenrollform',
   templateUrl: './studentenrollform.component.html'
 })
 export class StudentenrollformComponent implements OnInit {
 
-  constructor(private servicee: stdenrollservice) { }
+  constructor(public service: StdenrollserviceService) { }
 
   ngOnInit(): void {
   }
