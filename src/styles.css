@@ -25,10 +25,12 @@ padding: 10px 0px 10px 0px;
 
 
 }
-
 .outer-style{
   background-color: #d9d9d972;
   padding: 10px;
   border:2px solid #acacac;
   border-radius: .6rem;
+}
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: #673ab7;
 }

@@ -1,20 +1,20 @@
 
 <div class="container">
   
-    <form class="col-md-6 outer-style" [formGroup]="service.form">    
+    <form class="col-md-6 outer-style" [formGroup]="service.form" (ngSubmit)="onSubmit()">    
       <div class="col-md-12 header-style mb-3">Personal Information</div>
       <div class="row"> 
         <div class="col-md-6">
           <mat-form-field class="full-width" appearance="fill">
             <mat-label>Id</mat-label>
-            <input #stdId maxlength="5" placeholder="Ex. 12048" formControlName="$Key" matInput>
+            <input #stdId maxlength="5" placeholder="Ex. 12048" formControlName="key" matInput>
             <mat-hint align="end">{{stdId.value.length}} / 5</mat-hint>
             </mat-form-field>  
         </div>
         <div class="col-md-6">
           <mat-form-field class="full-width" appearance="fill">
-            <mat-label>Full Name*</mat-label>
-            <input formControlName="Fullname"  matInput>
+            <mat-label>Full Name</mat-label>
+            <input formControlName="fullname"  matInput>
             <mat-error>This field is mandatory.</mat-error>
           </mat-form-field>
         </div>
@@ -25,19 +25,19 @@
       <div class="row">
         <div class="col-md-6">
           <mat-form-field class="full-width" appearance="fill">
-            <mat-label>Email *</mat-label>
+            <mat-label>Email</mat-label>
             <input formControlName="email"  matInput placeholder="Ex. abc@gmail.com">
-            <mat-error>Invalid emal address</mat-error>
+            <mat-error *ngIf="service.form.controls['email']?.errors?.['required']">This field is mandatory.</mat-error>
+
           </mat-form-field>
         </div>
         <div class="col-md-6">
           <mat-form-field class="full-width" appearance="fill">
             <mat-label>Telephone</mat-label>
             <span matPrefix>+1 &nbsp;</span>
-            <input formControlName="Telephone" type="tel" matInput placeholder="555-555-1234">
-            <mat-error *ngIf="service.form.controls['mobile'].errors?.['required']">This field is mandatory.</mat-error>
-            <mat-error *ngIf="service.form.controls['mobile'].errors?.['minlength']">10 charactors needed</mat-error>
-            <mat-error *ngIf="service.form.controls['mobile'].errors?.['maxlength']">10 charactors needed</mat-error>
+            <input formControlName="telephone" type="tel" matInput placeholder="555-555-1234">
+            <mat-error *ngIf="service.form.controls['mobile']?.errors?.['required']">This field is mandatory.</mat-error>
+            <mat-error *ngIf="service.form.controls['mobile']?.errors?.['minlength']">10 charactors needed</mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -48,14 +48,13 @@
             <input formControlName="age" matInput placeholder="Ex. 19">
           </mat-form-field>
         </div>
-        <div class="col-md-6">
-          <mat-form-field class="full-width" appearance="fill">
-            <mat-radio-group aria-label="Gender" formControlName="gender">
-              <mat-radio-button value="1">Male</mat-radio-button>
-              <mat-radio-button value="2">Female</mat-radio-button>
-              <mat-radio-button value="3">Other</mat-radio-button>
-            </mat-radio-group>
-      </mat-form-field>
+        <div class="col-md-6 py-3">
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">Male</mat-radio-button>
+            <mat-radio-button class="px-2" value="2">Female</mat-radio-button>
+            <mat-radio-button value="3">Other</mat-radio-button>
+          </mat-radio-group>
+ 
         </div>
       </div>
        
@@ -89,11 +88,10 @@
             </mat-form-field>
           </div>
       </div>
-      <div class="row">
+     
         <button type="submit" class="px-5 mr-3" mat-raised-button color="primary" [disabled]="service.form.invalid">Submit</button>
-        <button class="px-5" mat-raised-button color="warn" (click)='onClear()'>Clear</button>
+        <button class="px-5 mx-2" mat-raised-button color="warn" (click)='onClear()'>Reset</button>
 
-      </div>
     </form>
 </div>
 

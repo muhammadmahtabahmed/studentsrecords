@@ -5,7 +5,7 @@ import { StdenrollserviceService } from '../shared/stdenrollservice.service';
   templateUrl: './studentenrollform.component.html'
 })
 export class StudentenrollformComponent implements OnInit {
-
+  formData: string[] = [];
   constructor(public service: StdenrollserviceService) { }
 
   ngOnInit(): void {
@@ -16,4 +16,10 @@ export class StudentenrollformComponent implements OnInit {
     this.service.form.reset();
     this.service.initializeFormGroup();
   }
+
+  onSubmit(){
+    this.formData.push(this.service.form.value);
+
+  }
 }
+        

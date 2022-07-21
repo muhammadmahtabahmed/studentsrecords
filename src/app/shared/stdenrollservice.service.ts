@@ -9,14 +9,15 @@ export class StdenrollserviceService {
   constructor() { }
 
   form: FormGroup = new FormGroup({
-    $key: new FormControl(null),
+    
+    key: new FormControl(null,Validators.required),
     fullname: new FormControl('',Validators.required),
-    email: new FormControl('',Validators.email),
+    email: new FormControl('',[Validators.email,Validators.required]),
     telephone: new FormControl('',[Validators.required,Validators.minLength(10),Validators.maxLength(10)]),
     age: new FormControl('',Validators.required),
     gender: new FormControl('1',Validators.required),
     address: new FormControl('',Validators.required),
-    city: new FormControl(''),
+    city: new FormControl('' ,Validators.required),
     state: new FormControl('',Validators.required),
     postalcode: new FormControl('',Validators.required),
 
@@ -24,7 +25,7 @@ export class StdenrollserviceService {
   });
   initializeFormGroup(){
     this.form.setValue({
-        $key:null,
+        key:null,
         fullname:'',
         email: '',
         telephone:'',
