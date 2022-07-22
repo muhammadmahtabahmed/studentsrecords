@@ -34,3 +34,7 @@ padding: 10px 0px 10px 0px;
 .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
   border-color: #673ab7;
 }
+
+table {
+  width: 100%;
+}

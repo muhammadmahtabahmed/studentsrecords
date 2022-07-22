@@ -17,7 +17,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatToolbarModule} from '@angular/material/toolbar'; 
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 import {MatRadioModule} from '@angular/material/radio';
-import {StdenrollserviceService} from './shared/stdenrollservice.service'
+import {StdenrollserviceService} from './shared/stdenrollservice.service';
+import {MatTableModule} from '@angular/material/table';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +41,9 @@ import {StdenrollserviceService} from './shared/stdenrollservice.service'
     MatToolbarModule,
     BrowserAnimationsModule,
     MatRadioModule,
-    NgxMatFileInputModule
+    NgxMatFileInputModule,
+    MatTableModule
+    
   ],
   providers: [StdenrollserviceService],
   bootstrap: [AppComponent]
