@@ -19,6 +19,8 @@ import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 import {MatRadioModule} from '@angular/material/radio';
 import {StdenrollserviceService} from './shared/stdenrollservice.service';
 import {MatTableModule} from '@angular/material/table';
+import { ToastrModule } from 'ngx-toastr';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import {MatTableModule} from '@angular/material/table';
     DashboardComponent,
     StudentenrollformComponent,
     EnrollstudentlistComponent,
-    EnrollstudentdetailComponent
+    EnrollstudentdetailComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import {MatTableModule} from '@angular/material/table';
     BrowserAnimationsModule,
     MatRadioModule,
     NgxMatFileInputModule,
-    MatTableModule
+    MatTableModule,
+    ToastrModule.forRoot()
     
   ],
   providers: [StdenrollserviceService],
